@@ -443,6 +443,96 @@ body {
 }
 .feature p { font-size: 12.5px; color: var(--text2); line-height: 1.7; }
 
+/* ═══ ABOUT SECTION ═══ */
+.about-grid {
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+}
+.about-card {
+  padding: 36px 32px; border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.4s ease;
+}
+.about-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+  transform: translateY(-2px);
+}
+.about-icon {
+  font-size: 36px; margin-bottom: 18px;
+  display: inline-block;
+}
+.about-card h3 {
+  font-size: 20px; font-weight: 800; color: var(--text);
+  margin-bottom: 16px; letter-spacing: -0.3px;
+}
+.about-card p {
+  font-size: 14px; color: var(--text2);
+  line-height: 1.8; margin-bottom: 16px;
+}
+.about-card p strong { color: var(--text); }
+.about-highlight {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 20px; border-radius: 12px;
+  background: rgba(232,128,74,0.06);
+  border: 1px solid rgba(232,128,74,0.15);
+  margin-top: 20px;
+}
+.about-hl-icon { font-size: 20px; flex-shrink: 0; line-height: 1.4; }
+.about-highlight span {
+  font-size: 13px; color: var(--text2); line-height: 1.7;
+}
+.about-highlight strong { color: var(--accent); }
+
+/* About Data Stats Mini Grid */
+.about-data-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; margin: 20px 0;
+  background: var(--border); border-radius: 12px; overflow: hidden;
+}
+.about-data-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 12px;
+  background: rgba(10,10,15,0.6);
+  transition: background 0.3s;
+}
+.about-data-item:hover { background: rgba(255,255,255,0.03); }
+.about-data-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px; font-weight: 700; color: var(--accent);
+}
+.about-data-lbl {
+  font-size: 10px; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-top: 4px; font-weight: 500;
+}
+
+/* About Pipeline Steps */
+.about-steps {
+  list-style: none; counter-reset: step;
+  padding: 0; margin: 8px 0 4px;
+}
+.about-steps li {
+  counter-increment: step;
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px; color: var(--text2); line-height: 1.7;
+}
+.about-steps li:last-child { border-bottom: none; }
+.about-steps li::before {
+  content: counter(step);
+  flex-shrink: 0;
+  width: 26px; height: 26px; border-radius: 7px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(232,128,74,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700; color: var(--accent);
+  margin-top: 1px;
+}
+.about-steps li strong { color: var(--text); }
+
 /* ═══ FOOTER ═══ */
 .footer {
   padding: 40px 0; border-top: 1px solid var(--border);
@@ -478,4 +568,5 @@ body {
   .hero-brand-word { letter-spacing: -2px; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-text { text-align: center; }
+  .about-data-grid { grid-template-columns: repeat(2, 1fr); }
 }

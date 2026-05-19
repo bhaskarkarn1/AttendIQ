@@ -34,13 +34,72 @@
   <p class="hero-sub">AttendIQ is a behavioral analytics platform that models 5,000 student journeys across 90 days, identifies funnel bottlenecks, predicts churn risk using machine learning, and validates interventions through controlled experimentation — generating actionable, data-driven insights for retention optimization.</p>
   <div class="hero-actions">
     <a href="app.html" class="btn btn-primary">Explore Analytics Dashboard</a>
-    <a href="#insights" class="btn btn-ghost">View Key Findings ↓</a>
+    <a href="#about" class="btn btn-ghost">About This Project ↓</a>
   </div>
   <div class="hero-stats">
     <div class="hero-stat"><span class="hero-stat-val">5,000</span><span class="hero-stat-lbl">Users Analyzed</span></div>
     <div class="hero-stat"><span class="hero-stat-val">592K</span><span class="hero-stat-lbl">Behavioral Events</span></div>
     <div class="hero-stat"><span class="hero-stat-val">24.6%</span><span class="hero-stat-lbl">End-to-End Conversion</span></div>
     <div class="hero-stat"><span class="hero-stat-val">0.96</span><span class="hero-stat-lbl">Churn AUC-ROC</span></div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT THIS PROJECT ═══ -->
+<section class="section section-dark" id="about">
+  <div class="container">
+    <div class="section-badge">About This Project</div>
+    <h2>The Story Behind AttendIQ</h2>
+    <p class="section-desc">AttendIQ was built to answer a fundamental question: <strong>Can we use behavioral data science to transform a broken, manual attendance recovery process into an intelligent, data-driven system?</strong> Here's the full picture.</p>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon">🤔</div>
+        <h3>Why This Exists</h3>
+        <p>In most educational institutions, attendance recovery is a <strong>black box</strong> — students submit make-up work, professors approve or reject it, and no one tracks what happens in between. There is zero visibility into where students drop off, which interventions work, or who is at risk of giving up entirely.</p>
+        <p>AttendIQ was built to bring <strong>product analytics thinking</strong> (the kind used by Netflix, Spotify, and Duolingo) to this overlooked educational process. The goal: treat each student's recovery journey like a user funnel, measure every stage, predict churn before it happens, and statistically validate which interventions actually move the needle.</p>
+        <div class="about-highlight">
+          <span class="about-hl-icon">💡</span>
+          <span>This is not just a dashboard — it's a <strong>Decision Science framework</strong> that generates actionable, evidence-based recommendations.</span>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">📦</div>
+        <h3>Data Source & Methodology</h3>
+        <p>The dataset was <strong>synthetically generated using statistical distributions</strong> that mirror real-world educational behavioral patterns. We modeled <strong>5,000 unique students</strong> across a 90-day semester, generating 592,000+ event-level records.</p>
+        <div class="about-data-grid">
+          <div class="about-data-item"><span class="about-data-num">5,000</span><span class="about-data-lbl">Simulated Users</span></div>
+          <div class="about-data-item"><span class="about-data-num">592K</span><span class="about-data-lbl">Behavioral Events</span></div>
+          <div class="about-data-item"><span class="about-data-num">90</span><span class="about-data-lbl">Days Tracked</span></div>
+          <div class="about-data-item"><span class="about-data-num">7</span><span class="about-data-lbl">Funnel Stages</span></div>
+        </div>
+        <p>Each user's journey includes: app opens, absence declarations, PDF study sessions (with realistic duration distributions), quiz attempts and scores, and professor approval decisions. The data captures real behavioral variance — Power Users who complete 70+ sessions, At-Risk students who barely engage, and Churned users who abandon the process entirely.</p>
+        <div class="about-highlight">
+          <span class="about-hl-icon">📊</span>
+          <span>All correlations, retention curves, and segment behaviors emerge naturally from the simulated data — nothing is hardcoded.</span>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <div class="about-icon">🏗️</div>
+        <h3>How We Built It</h3>
+        <p>AttendIQ follows an <strong>8-layer end-to-end pipeline</strong>, from raw event generation to interactive decision support:</p>
+        <ol class="about-steps">
+          <li><strong>Data Generation</strong> — Python script simulates 592K events using Poisson, Normal, and Beta distributions calibrated from educational research.</li>
+          <li><strong>Data Warehouse</strong> — SQLite database with star-schema design: fact tables (events, sessions) and dimension tables (users, professors).</li>
+          <li><strong>ETL Pipeline</strong> — Pandas-powered extraction transforms raw logs into user profiles, session aggregates, and daily KPI time-series.</li>
+          <li><strong>Analytics Engine</strong> — Computes conversion funnels, cohort retention (D1/D7/D30), stickiness ratios, and a weighted Product Health Score.</li>
+          <li><strong>ML Models</strong> — K-Means clustering (4 segments), Random Forest churn predictor (AUC 0.9655), Isolation Forest anomaly detection.</li>
+          <li><strong>A/B Testing</strong> — Student's two-sample t-test validates 3 intervention experiments with 95% confidence intervals.</li>
+          <li><strong>Insight Engine</strong> — Automated discovery of patterns, correlations, and operational bottlenecks ranked by business impact.</li>
+          <li><strong>Interactive Dashboard</strong> — 18 Chart.js visualizations with cross-filtering, drill-downs, and a data-driven scenario simulator.</li>
+        </ol>
+        <div class="about-highlight">
+          <span class="about-hl-icon">⚡</span>
+          <span>Zero external dependencies — the entire frontend runs on vanilla JavaScript. No React, no npm, no build step.</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
