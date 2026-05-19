@@ -2,7 +2,7 @@
 
 > Turning Behavioral Data Into Retention Decisions.
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-GitHub_Pages-4ade80?style=for-the-badge)](https://bhaskarkarn.github.io/AttendIQ/dashboard/)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-GitHub_Pages-4ade80?style=for-the-badge)](https://bhaskarkarn1.github.io/AttendIQ/dashboard/)
 [![License](https://img.shields.io/badge/License-MIT-60a5fa?style=for-the-badge)](#license)
 
 ---
@@ -92,11 +92,11 @@ AttendIQ/
 ## 🚀 Quick Start
 
 ### Option 1: Live Demo
-👉 **[Open Live Demo](https://bhaskarkarn.github.io/AttendIQ/dashboard/)**
+👉 **[Open Live Demo](https://bhaskarkarn1.github.io/AttendIQ/dashboard/)**
 
 ### Option 2: Run Locally
 ```bash
-git clone https://github.com/bhaskarkarn/AttendIQ.git
+git clone https://github.com/bhaskarkarn1/AttendIQ.git
 cd AttendIQ
 python3 -m http.server 8000
 ```
@@ -134,5 +134,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  Built with ☕ by <a href="https://github.com/bhaskarkarn">Bhaskar Karn</a>
+  Built with ☕ by <a href="https://github.com/bhaskarkarn1">Bhaskar Karn</a>
 </p>
