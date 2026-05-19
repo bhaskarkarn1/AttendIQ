@@ -1,0 +1,62 @@
+[
+  {
+    "category": "funnel",
+    "severity": "critical",
+    "title": "Biggest drop-off at Absence Declared",
+    "description": "27% of users drop off at the absence declared stage. This is the #1 conversion bottleneck.",
+    "metric_value": 0.266,
+    "benchmark_value": 0.15,
+    "impact_score": 0.95,
+    "insight_id": "insight_001"
+  },
+  {
+    "category": "engagement",
+    "severity": "critical",
+    "title": "Low study time \u2192 high failure rate",
+    "description": "Users spending <3 minutes have 100% failure rate vs 27% for users spending more time.",
+    "metric_value": 1.0,
+    "benchmark_value": 0.275,
+    "impact_score": 0.9,
+    "insight_id": "insight_002"
+  },
+  {
+    "category": "quality",
+    "severity": "critical",
+    "title": "prof_001 rejects 1.5x more than average",
+    "description": "prof_001 has 53% approval rate vs 82% average (1676 reviews). This is a potential bottleneck.",
+    "metric_value": 0.53,
+    "benchmark_value": 0.817,
+    "impact_score": 0.85,
+    "insight_id": "insight_003"
+  },
+  {
+    "category": "quality",
+    "severity": "critical",
+    "title": "prof_002 rejects 1.5x more than average",
+    "description": "prof_002 has 54% approval rate vs 82% average (2295 reviews). This is a potential bottleneck.",
+    "metric_value": 0.538,
+    "benchmark_value": 0.817,
+    "impact_score": 0.85,
+    "insight_id": "insight_004"
+  },
+  {
+    "category": "retention",
+    "severity": "info",
+    "title": "D1\u2192D7 retention drops -0%",
+    "description": "Day 1 retention is 48% but drops to 49% by Day 7 \u2014 a -0% loss. Early engagement is critical.",
+    "metric_value": 0.486,
+    "benchmark_value": 0.483,
+    "impact_score": 0.85,
+    "insight_id": "insight_005"
+  },
+  {
+    "category": "engagement",
+    "severity": "warning",
+    "title": "Massive engagement gap between segments",
+    "description": "Power users average 70 sessions vs 13 for at-risk users \u2014 a 56 session gap.",
+    "metric_value": 13.4,
+    "benchmark_value": 69.7,
+    "impact_score": 0.75,
+    "insight_id": "insight_006"
+  }
+]

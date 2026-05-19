@@ -1,0 +1,164 @@
+[
+  {
+    "experiment_id": "timer_experiment",
+    "name": "Timer vs No Timer",
+    "variants": {
+      "quiz_pass_rate": {
+        "variant_a": {
+          "name": "timer",
+          "mean": 0.5072,
+          "n": 2526
+        },
+        "variant_b": {
+          "name": "no_timer",
+          "mean": 0.4567,
+          "n": 2474
+        },
+        "lift_pct": 11.06,
+        "p_value": 0.0,
+        "is_significant": true,
+        "winner": "timer"
+      },
+      "avg_session_duration_sec": {
+        "variant_a": {
+          "name": "timer",
+          "mean": 16136.1967,
+          "n": 2526
+        },
+        "variant_b": {
+          "name": "no_timer",
+          "mean": 14729.4006,
+          "n": 2474
+        },
+        "lift_pct": 9.55,
+        "p_value": 0.0085,
+        "is_significant": true,
+        "winner": "timer"
+      },
+      "total_sessions": {
+        "variant_a": {
+          "name": "timer",
+          "mean": 30.9842,
+          "n": 2526
+        },
+        "variant_b": {
+          "name": "no_timer",
+          "mean": 31.5238,
+          "n": 2474
+        },
+        "lift_pct": -1.71,
+        "p_value": 0.3732,
+        "is_significant": false,
+        "winner": "no_timer"
+      }
+    }
+  },
+  {
+    "experiment_id": "question_experiment",
+    "name": "3 Questions vs 5 Questions",
+    "variants": {
+      "quiz_pass_rate": {
+        "variant_a": {
+          "name": "3_questions",
+          "mean": 0.4751,
+          "n": 2510
+        },
+        "variant_b": {
+          "name": "5_questions",
+          "mean": 0.4893,
+          "n": 2490
+        },
+        "lift_pct": -2.9,
+        "p_value": 0.192,
+        "is_significant": false,
+        "winner": "5_questions"
+      },
+      "total_sessions": {
+        "variant_a": {
+          "name": "3_questions",
+          "mean": 30.7243,
+          "n": 2510
+        },
+        "variant_b": {
+          "name": "5_questions",
+          "mean": 31.7823,
+          "n": 2490
+        },
+        "lift_pct": -3.33,
+        "p_value": 0.0808,
+        "is_significant": false,
+        "winner": "5_questions"
+      },
+      "funnel_max_stage": {
+        "variant_a": {
+          "name": "3_questions",
+          "mean": 5.643,
+          "n": 2510
+        },
+        "variant_b": {
+          "name": "5_questions",
+          "mean": 5.5924,
+          "n": 2490
+        },
+        "lift_pct": 0.91,
+        "p_value": 0.373,
+        "is_significant": false,
+        "winner": "3_questions"
+      }
+    }
+  },
+  {
+    "experiment_id": "notification_experiment",
+    "name": "Notification vs No Notification",
+    "variants": {
+      "days_active": {
+        "variant_a": {
+          "name": "notification",
+          "mean": 35.804,
+          "n": 2479
+        },
+        "variant_b": {
+          "name": "no_notification",
+          "mean": 31.029,
+          "n": 2521
+        },
+        "lift_pct": 15.39,
+        "p_value": 0.0,
+        "is_significant": true,
+        "winner": "notification"
+      },
+      "total_sessions": {
+        "variant_a": {
+          "name": "notification",
+          "mean": 33.8249,
+          "n": 2479
+        },
+        "variant_b": {
+          "name": "no_notification",
+          "mean": 28.7203,
+          "n": 2521
+        },
+        "lift_pct": 17.77,
+        "p_value": 0.0,
+        "is_significant": true,
+        "winner": "notification"
+      },
+      "quiz_pass_rate": {
+        "variant_a": {
+          "name": "notification",
+          "mean": 0.4809,
+          "n": 2479
+        },
+        "variant_b": {
+          "name": "no_notification",
+          "mean": 0.4834,
+          "n": 2521
+        },
+        "lift_pct": -0.52,
+        "p_value": 0.8179,
+        "is_significant": false,
+        "winner": "no_notification"
+      }
+    }
+  }
+]

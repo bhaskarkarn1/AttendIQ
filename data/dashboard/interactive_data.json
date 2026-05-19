@@ -1,0 +1,140 @@
+{
+  "segments": {
+    "Power User": {
+      "count": 749,
+      "avg_sessions": 69.7,
+      "avg_duration_sec": 54681.5,
+      "avg_days_active": 75.5,
+      "avg_pass_rate": 0.912,
+      "avg_quiz_attempts": 47.9,
+      "avg_funnel_depth": 7.0,
+      "total_events": 297864
+    },
+    "Regular User": {
+      "count": 2135,
+      "avg_sessions": 38.1,
+      "avg_duration_sec": 14570.0,
+      "avg_days_active": 40.9,
+      "avg_pass_rate": 0.66,
+      "avg_quiz_attempts": 9.6,
+      "avg_funnel_depth": 7.0,
+      "total_events": 253996
+    },
+    "At-Risk User": {
+      "count": 400,
+      "avg_sessions": 13.4,
+      "avg_duration_sec": 12665.6,
+      "avg_days_active": 14.3,
+      "avg_pass_rate": 0.798,
+      "avg_quiz_attempts": 2.4,
+      "avg_funnel_depth": 6.9,
+      "total_events": 14317
+    },
+    "Churned User": {
+      "count": 1716,
+      "avg_sessions": 10.1,
+      "avg_duration_sec": 41.3,
+      "avg_days_active": 10.2,
+      "avg_pass_rate": 0.0,
+      "avg_quiz_attempts": 0.3,
+      "avg_funnel_depth": 3.0,
+      "total_events": 26399
+    }
+  },
+  "correlations": {
+    "total_sessions": {
+      "total_sessions": 1.0,
+      "avg_session_duration_sec": 0.832,
+      "days_active": 0.997,
+      "quiz_pass_rate": 0.73,
+      "quiz_attempts": 0.884,
+      "funnel_max_stage": 0.68
+    },
+    "avg_session_duration_sec": {
+      "total_sessions": 0.832,
+      "avg_session_duration_sec": 1.0,
+      "days_active": 0.851,
+      "quiz_pass_rate": 0.722,
+      "quiz_attempts": 0.944,
+      "funnel_max_stage": 0.557
+    },
+    "days_active": {
+      "total_sessions": 0.997,
+      "avg_session_duration_sec": 0.851,
+      "days_active": 1.0,
+      "quiz_pass_rate": 0.744,
+      "quiz_attempts": 0.89,
+      "funnel_max_stage": 0.687
+    },
+    "quiz_pass_rate": {
+      "total_sessions": 0.73,
+      "avg_session_duration_sec": 0.722,
+      "days_active": 0.744,
+      "quiz_pass_rate": 1.0,
+      "quiz_attempts": 0.606,
+      "funnel_max_stage": 0.847
+    },
+    "quiz_attempts": {
+      "total_sessions": 0.884,
+      "avg_session_duration_sec": 0.944,
+      "days_active": 0.89,
+      "quiz_pass_rate": 0.606,
+      "quiz_attempts": 1.0,
+      "funnel_max_stage": 0.48
+    },
+    "funnel_max_stage": {
+      "total_sessions": 0.68,
+      "avg_session_duration_sec": 0.557,
+      "days_active": 0.687,
+      "quiz_pass_rate": 0.847,
+      "quiz_attempts": 0.48,
+      "funnel_max_stage": 1.0
+    }
+  },
+  "time_impact": {
+    "<3 min": {
+      "pass_rate": 0.0,
+      "count": 1674
+    },
+    "3-10 min": {
+      "pass_rate": 0.129,
+      "count": 56
+    },
+    ">10 min": {
+      "pass_rate": 0.735,
+      "count": 3270
+    }
+  },
+  "frequency_impact": {
+    "1-5": {
+      "avg_pass_rate": 0.106,
+      "avg_days_active": 4.0,
+      "avg_funnel_depth": 3.2,
+      "count": 311
+    },
+    "6-15": {
+      "avg_pass_rate": 0.131,
+      "avg_days_active": 10.1,
+      "avg_funnel_depth": 3.7,
+      "count": 1480
+    },
+    "16-30": {
+      "avg_pass_rate": 0.455,
+      "avg_days_active": 25.7,
+      "avg_funnel_depth": 5.7,
+      "count": 601
+    },
+    "31-60": {
+      "avg_pass_rate": 0.673,
+      "avg_days_active": 43.5,
+      "avg_funnel_depth": 7.0,
+      "count": 1955
+    },
+    "60+": {
+      "avg_pass_rate": 0.91,
+      "avg_days_active": 76.9,
+      "avg_funnel_depth": 7.0,
+      "count": 653
+    }
+  }
+}

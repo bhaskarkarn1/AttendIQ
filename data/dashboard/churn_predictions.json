@@ -1,0 +1,365 @@
+{
+  "auc_roc": 0.9655,
+  "feature_importance": {
+    "total_sessions": 0.2948,
+    "days_active": 0.2343,
+    "total_events": 0.1865,
+    "avg_session_duration_sec": 0.1287,
+    "quiz_attempts": 0.1085,
+    "funnel_max_stage": 0.0388,
+    "quiz_pass_rate": 0.0085
+  },
+  "total_high_risk": 872,
+  "high_risk_users": [
+    {
+      "user_id": "u_04598",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 76,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04362",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 81,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04440",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 73,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04837",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 74,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04699",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 73,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04331",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9998924731182797,
+      "days_inactive": 68,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04702",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9990521327014218,
+      "days_inactive": 80,
+      "total_sessions": 5
+    },
+    {
+      "user_id": "u_04388",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 66,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04483",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 80,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04653",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 70,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04966",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 81,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04737",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 72,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04623",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 70,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04763",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9989681033703804,
+      "days_inactive": 75,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04687",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9988235294117647,
+      "days_inactive": 74,
+      "total_sessions": 12
+    },
+    {
+      "user_id": "u_04523",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9988235294117647,
+      "days_inactive": 71,
+      "total_sessions": 13
+    },
+    {
+      "user_id": "u_04461",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.99875,
+      "days_inactive": 68,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04703",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9987491023983915,
+      "days_inactive": 72,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04565",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9987491023983915,
+      "days_inactive": 77,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04338",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 74,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04779",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 84,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04518",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 79,
+      "total_sessions": 5
+    },
+    {
+      "user_id": "u_04918",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 83,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04917",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 82,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04798",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 81,
+      "total_sessions": 5
+    },
+    {
+      "user_id": "u_04512",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 79,
+      "total_sessions": 5
+    },
+    {
+      "user_id": "u_04649",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 74,
+      "total_sessions": 5
+    },
+    {
+      "user_id": "u_04678",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 82,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04282",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9984788321281212,
+      "days_inactive": 78,
+      "total_sessions": 6
+    },
+    {
+      "user_id": "u_04879",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9982974157202897,
+      "days_inactive": 76,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04960",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9981510013910833,
+      "days_inactive": 72,
+      "total_sessions": 4
+    },
+    {
+      "user_id": "u_04950",
+      "user_segment": "Churned User",
+      "churn_probability": 0.9981318681318682,
+      "days_inactive": 69,
+      "total_sessions": 8
+    },
+    {
+      "user_id": "u_04552",
+      "user_segment": "Churned User",
+      "churn_probability": 0.9977913693798807,
+      "days_inactive": 81,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04340",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977241151469891,
+      "days_inactive": 72,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04505",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977241151469891,
+      "days_inactive": 72,
+      "total_sessions": 7
+    },
+    {
+      "user_id": "u_04838",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 63,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04727",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 80,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04332",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 75,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04629",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 72,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04342",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 71,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04344",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 71,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04350",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 70,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04254",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 73,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04441",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 71,
+      "total_sessions": 9
+    },
+    {
+      "user_id": "u_04795",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9977181033703805,
+      "days_inactive": 69,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04642",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9975735294117647,
+      "days_inactive": 64,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04741",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9975735294117647,
+      "days_inactive": 71,
+      "total_sessions": 11
+    },
+    {
+      "user_id": "u_04402",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9972181033703804,
+      "days_inactive": 69,
+      "total_sessions": 10
+    },
+    {
+      "user_id": "u_04999",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9972181033703804,
+      "days_inactive": 67,
+      "total_sessions": 10
+    },
+    {
+      "user_id": "u_04855",
+      "user_segment": "At-Risk User",
+      "churn_probability": 0.9972181033703804,
+      "days_inactive": 64,
+      "total_sessions": 10
+    }
+  ]
+}

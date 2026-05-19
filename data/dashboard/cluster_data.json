@@ -1,0 +1,34 @@
+[
+  {
+    "segment": "Power User",
+    "count": 749,
+    "avg_sessions": 69.7,
+    "avg_duration": 54681.5,
+    "avg_pass_rate": 0.912,
+    "avg_days_active": 75.5
+  },
+  {
+    "segment": "At-Risk User",
+    "count": 400,
+    "avg_sessions": 13.4,
+    "avg_duration": 12665.6,
+    "avg_pass_rate": 0.798,
+    "avg_days_active": 14.3
+  },
+  {
+    "segment": "Churned User",
+    "count": 1716,
+    "avg_sessions": 10.1,
+    "avg_duration": 41.3,
+    "avg_pass_rate": 0.0,
+    "avg_days_active": 10.2
+  },
+  {
+    "segment": "Regular User",
+    "count": 2135,
+    "avg_sessions": 38.1,
+    "avg_duration": 14570.0,
+    "avg_pass_rate": 0.66,
+    "avg_days_active": 40.9
+  }
+]

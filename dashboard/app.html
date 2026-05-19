@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AttendIQ — Behavioral Analytics & Retention Intelligence Platform</title>
+  <meta name="description" content="Behavioral analytics dashboard — interactive retention analysis, funnel drill-down, churn prediction, statistical experimentation, and data-driven intervention recommendations.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+
+  <div class="app">
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">A</div>
+        <h1>Attend<span>IQ</span></h1>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Behavioral Analytics</div>
+        <div class="nav-item active" data-section="sec-pulse" onclick="switchSection(this)"><span class="icon">📊</span> Analytics Overview</div>
+        <div class="nav-item" data-section="sec-impact" onclick="switchSection(this)"><span class="icon">🔗</span> KPI Causal Analysis</div>
+        <div class="nav-item" data-section="sec-funnel" onclick="switchSection(this)"><span class="icon">📈</span> Funnel Analytics</div>
+        <div class="nav-item" data-section="sec-engagement" onclick="switchSection(this)"><span class="icon">📉</span> Engagement Metrics</div>
+        <div class="nav-item" data-section="sec-retention" onclick="switchSection(this)"><span class="icon">🔄</span> Cohort Retention</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Decision Science</div>
+        <div class="nav-item" data-section="sec-experiments" onclick="switchSection(this)"><span class="icon">🧪</span> Statistical Experiments</div>
+        <div class="nav-item" data-section="sec-simulator" onclick="switchSection(this)"><span class="icon">🎛️</span> Scenario Simulation</div>
+        <div class="nav-item" data-section="sec-insights" onclick="switchSection(this)"><span class="icon">🔍</span> Data-Driven Insights</div>
+        <div class="nav-item" data-section="sec-actions" onclick="switchSection(this)"><span class="icon">⚡</span> Interventions</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Advanced Analytics</div>
+        <div class="nav-item" data-section="sec-segments" onclick="switchSection(this)"><span class="icon">🎯</span> User Segmentation</div>
+        <div class="nav-item" data-section="sec-churn" onclick="switchSection(this)"><span class="icon">⚠️</span> Churn Intelligence</div>
+        <div class="nav-item" data-section="sec-professors" onclick="switchSection(this)"><span class="icon">👨‍🏫</span> Professor Analytics</div>
+      </div>
+
+      <div class="sidebar-filter">
+        <div class="filter-label">Filter by Segment</div>
+        <div class="segment-btn active" data-segment="all" onclick="filterSegment(this)">
+          <div class="segment-dot" style="background:var(--cyan)"></div> All Users
+          <span class="count" id="seg-count-all">5,000</span>
+        </div>
+        <div class="segment-btn" data-segment="Power User" onclick="filterSegment(this)">
+          <div class="segment-dot" style="background:var(--emerald)"></div> Power
+          <span class="count" id="seg-count-power">—</span>
+        </div>
+        <div class="segment-btn" data-segment="Regular User" onclick="filterSegment(this)">
+          <div class="segment-dot" style="background:var(--violet)"></div> Regular
+          <span class="count" id="seg-count-regular">—</span>
+        </div>
+        <div class="segment-btn" data-segment="At-Risk User" onclick="filterSegment(this)">
+          <div class="segment-dot" style="background:var(--amber)"></div> At-Risk
+          <span class="count" id="seg-count-atrisk">—</span>
+        </div>
+        <div class="segment-btn" data-segment="Churned User" onclick="filterSegment(this)">
+          <div class="segment-dot" style="background:var(--rose)"></div> Churned
+          <span class="count" id="seg-count-churned">—</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ═══ MAIN ═══ -->
+    <main class="main">
+
+      <!-- ── ANALYTICS OVERVIEW ── -->
+      <div class="section active" id="sec-pulse">
+        <div class="page-header">
+          <div><div class="page-title">Analytics Overview</div><div class="page-subtitle">Click any metric to explore its behavioral impact across the system</div></div>
+          <div class="live-badge"><div class="live-dot"></div> Analytics Engine Active</div>
+        </div>
+
+        <div class="card g1">
+          <div class="card-title">Product Health Score</div>
+          <div class="gauge-wrap">
+            <div class="gauge">
+              <svg width="180" height="180" viewBox="0 0 180 180">
+                <defs>
+                  <linearGradient id="gGrad"><stop offset="0%" stop-color="#b35c1e"/><stop offset="100%" stop-color="#2a7a6e"/></linearGradient>
+                </defs>
+                <circle class="gauge-bg" cx="90" cy="90" r="78"/>
+                <circle class="gauge-fill" id="gauge-fill" cx="90" cy="90" r="78" stroke="url(#gGrad)" stroke-dasharray="490" stroke-dashoffset="490"/>
+              </svg>
+              <div class="gauge-center"><div class="gauge-num" id="gauge-num">—</div><div class="gauge-label">Health</div></div>
+            </div>
+            <div class="gauge-breakdown" id="gauge-breakdown"></div>
+          </div>
+        </div>
+
+        <div class="g4" id="kpi-grid"></div>
+
+        <div class="card g1">
+          <div class="card-title">Conversion Funnel — Click a stage to drill down into drop-off analysis</div>
+          <div class="funnel" id="funnel-overview"></div>
+          <div id="funnel-drill"></div>
+        </div>
+      </div>
+
+      <!-- ── KPI CAUSAL ANALYSIS ── -->
+      <div class="section" id="sec-impact">
+        <div class="page-header">
+          <div><div class="page-title">KPI Causal Analysis</div><div class="page-subtitle">Behavioral cause-and-effect mapping — see how upstream metrics cascade to downstream outcomes</div></div>
+        </div>
+        <div class="card g1">
+          <div class="card-title">Causal Chain: Study Time → Quiz Performance → Approval</div>
+          <div class="impact-flow" id="impact-chain"></div>
+        </div>
+        <div class="g2">
+          <div class="card">
+            <div class="card-title">Session Frequency → Behavioral Outcomes</div>
+            <div class="chart-box"><canvas id="freq-impact-chart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Study Duration → Pass Rate Correlation</div>
+            <div class="chart-box"><canvas id="time-impact-chart"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FUNNEL ANALYTICS ── -->
+      <div class="section" id="sec-funnel">
+        <div class="page-header">
+          <div><div class="page-title">Funnel Analytics</div><div class="page-subtitle">7-stage conversion analysis — click any stage for drop-off segmentation and downstream impact</div></div>
+        </div>
+        <div class="card g1">
+          <div class="card-title">Full Conversion Funnel</div>
+          <div class="funnel" id="funnel-detail"></div>
+          <div id="funnel-drill-detail"></div>
+        </div>
+      </div>
+
+      <!-- ── ENGAGEMENT METRICS ── -->
+      <div class="section" id="sec-engagement">
+        <div class="page-header"><div><div class="page-title">Engagement Metrics</div><div class="page-subtitle">Daily and weekly active user trends — tracking engagement depth, stickiness ratio, and behavioral quality over a 90-day observation window</div></div></div>
+        <div class="g3" id="eng-kpis"></div>
+        <div class="g2">
+          <div class="card">
+            <div class="card-title">📈 Daily Active Users (DAU) — 90-Day Trend</div>
+            <div class="card-desc">Unique users per day. Weekend dips indicate session-driven engagement patterns.</div>
+            <div class="chart-box"><canvas id="dau-chart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-title">📊 Weekly Active Users (WAU) — Rolling Window</div>
+            <div class="card-desc">7-day rolling unique users. Declining WAU signals long-term retention erosion.</div>
+            <div class="chart-box"><canvas id="wau-chart"></canvas></div>
+          </div>
+        </div>
+        <div class="card g1">
+          <div class="card-title">📉 Quality Metrics Over Time — Quiz Pass Rate & Approval Rate</div>
+          <div class="card-desc">Dual-axis tracking of behavioral quality indicators. Divergence between pass rate and approval rate reveals operational bottlenecks.</div>
+          <div class="chart-box"><canvas id="trend-chart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── COHORT RETENTION ── -->
+      <div class="section" id="sec-retention">
+        <div class="page-header"><div><div class="page-title">Cohort Retention Analysis</div><div class="page-subtitle">Week-over-week retention tracking across D1, D7, D14, D30, D60 — identifying engagement decay patterns and critical drop-off windows</div></div></div>
+        <div class="g3" id="ret-kpis"></div>
+        <div class="card g1">
+          <div class="card-title">🔥 Retention Heatmap — Cohort × Day</div>
+          <div class="card-desc">Each row is a weekly cohort. Cell color intensity represents the percentage of users returning on that day. Darker = higher retention. Hover cells for exact values.</div>
+          <div class="heatmap-wrap" id="ret-heatmap"></div>
+        </div>
+        <div class="card g1 context-card">
+          <div class="context-icon">💡</div>
+          <div class="context-text"><strong>Key Retention Insight:</strong> The steepest retention drop occurs between D1 (48.3%) and D14 (42.7%) — a 5.6pp loss. Implementing a D1-D3 onboarding engagement flow could improve D7 retention by 15-25% based on industry benchmarks.</div>
+        </div>
+        <div class="g2">
+          <div class="card"><div class="card-title">📉 Retention Decay Curve</div><div class="chart-box"><canvas id="ret-curve"></canvas></div></div>
+          <div class="card"><div class="card-title">🔗 Feature Correlation Matrix</div><div class="heatmap-wrap" id="corr-matrix"></div></div>
+        </div>
+      </div>
+
+      <!-- ── STATISTICAL EXPERIMENTS ── -->
+      <div class="section" id="sec-experiments">
+        <div class="page-header"><div><div class="page-title">Statistical Experiments</div><div class="page-subtitle">Controlled A/B testing with hypothesis validation — each experiment uses Student's two-sample t-test at α = 0.05 significance level</div></div></div>
+        <div class="card g1 context-card">
+          <div class="context-icon">📐</div>
+          <div class="context-text"><strong>Methodology:</strong> Experiments follow a randomized controlled trial design. Users are randomly assigned to control/treatment groups. Statistical significance is evaluated using a two-sample Student's t-test with 95% confidence intervals. Only experiments with p < 0.05 are marked as significant.</div>
+        </div>
+        <div id="exp-list" style="display:flex;flex-direction:column;gap:16px;"></div>
+      </div>
+
+      <!-- ── SCENARIO SIMULATION ── -->
+      <div class="section" id="sec-simulator">
+        <div class="page-header"><div><div class="page-title">Scenario Simulation</div><div class="page-subtitle">Model how hypothetical intervention changes cascade through KPIs — adjust parameters to project business impact before deployment</div></div></div>
+        <div class="card g1 context-card">
+          <div class="context-icon">🎯</div>
+          <div class="context-text"><strong>How It Works:</strong> Each slider models a specific intervention parameter. The system calculates cascading effects using empirically-derived elasticity coefficients from the behavioral data. For example, +1% PDF engagement → +0.6% quiz pass rate (based on observed correlation r = 0.78).</div>
+        </div>
+        <div class="card simulator g1">
+          <div class="card-title">⚙️ Simulate Intervention Scenarios</div>
+          <div class="sim-row">
+            <div class="sim-info"><span class="sim-label">PDF Engagement Increase</span><span class="sim-hint">Improves study depth → higher pass rates</span></div>
+            <input type="range" class="sim-slider" id="sim-pdf" min="0" max="50" value="0" oninput="updateSimulator()">
+            <span class="sim-val" id="sim-pdf-val">+0%</span>
+          </div>
+          <div class="sim-row">
+            <div class="sim-info"><span class="sim-label">Notification Reach</span><span class="sim-hint">Drives session frequency → engagement lift</span></div>
+            <input type="range" class="sim-slider" id="sim-notif" min="0" max="100" value="50" oninput="updateSimulator()">
+            <span class="sim-val" id="sim-notif-val">50%</span>
+          </div>
+          <div class="sim-row">
+            <div class="sim-info"><span class="sim-label">Onboarding Completion</span><span class="sim-hint">Improves D1-D3 activation → retention lift</span></div>
+            <input type="range" class="sim-slider" id="sim-onboard" min="0" max="100" value="30" oninput="updateSimulator()">
+            <span class="sim-val" id="sim-onboard-val">30%</span>
+          </div>
+          <div class="sim-row">
+            <div class="sim-info"><span class="sim-label">Quiz Question Count</span><span class="sim-hint">Fewer questions → higher completion rate</span></div>
+            <input type="range" class="sim-slider" id="sim-quiz" min="3" max="10" value="5" oninput="updateSimulator()">
+            <span class="sim-val" id="sim-quiz-val">5</span>
+          </div>
+          <div class="sim-result" id="sim-result">
+            <div class="sim-result-title">📊 Projected Impact</div>
+            <div class="sim-result-text" id="sim-result-text">Adjust sliders to model intervention outcomes...</div>
+          </div>
+          <div class="g2" style="margin-top:20px">
+            <div class="card"><div class="card-title">🕸️ Baseline vs Projected KPIs</div><div class="chart-box"><canvas id="sim-radar"></canvas></div></div>
+            <div class="card"><div class="card-title">📊 Impact Breakdown</div><div class="chart-box"><canvas id="sim-bars"></canvas></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DATA-DRIVEN INSIGHTS ── -->
+      <div class="section" id="sec-insights">
+        <div class="page-header"><div><div class="page-title">Data-Driven Insights</div><div class="page-subtitle">Behavioral findings ranked by business impact — derived from funnel analysis, predictive modeling, and cohort segmentation</div></div></div>
+        <div class="card g1 context-card">
+          <div class="context-icon">🔍</div>
+          <div class="context-text"><strong>How Insights Are Generated:</strong> The analytics engine scans behavioral patterns, funnel bottlenecks, operational variance, and segment-level engagement gaps. Each insight is scored by estimated business impact (0-100%) and ranked by actionability.</div>
+        </div>
+        <div class="g1" id="insights-list"></div>
+      </div>
+
+      <!-- ── INTERVENTIONS ── -->
+      <div class="section" id="sec-actions">
+        <div class="page-header"><div><div class="page-title">Intervention Recommendations</div><div class="page-subtitle">Priority-ranked, data-driven actions with expected impact quantification and implementation effort estimation</div></div></div>
+        <div class="g2">
+          <div class="card"><div class="card-title">Prioritized Interventions</div><div id="actions-list"></div></div>
+          <div class="card"><div class="card-title">Anomaly Alerts</div><div id="alerts-feed"></div></div>
+        </div>
+      </div>
+
+      <!-- ── USER SEGMENTATION ── -->
+      <div class="section" id="sec-segments">
+        <div class="page-header"><div><div class="page-title">User Segmentation</div><div class="page-subtitle">K-Means behavioral clustering — 4 distinct user segments with unique engagement profiles and recovery trajectories</div></div></div>
+        <div class="g4" id="seg-kpis"></div>
+        <div class="g2">
+          <div class="card"><div class="card-title">🎯 Segment Distribution</div><div class="chart-box"><canvas id="seg-doughnut"></canvas></div></div>
+          <div class="card"><div class="card-title">🕸️ Behavioral Profile Radar</div><div class="chart-box"><canvas id="seg-radar"></canvas></div></div>
+        </div>
+        <div class="card g1"><div class="card-title">📊 Segment Comparison — All Metrics</div><div class="chart-box" style="height:320px"><canvas id="seg-bars"></canvas></div></div>
+      </div>
+
+      <!-- ── CHURN INTELLIGENCE ── -->
+      <div class="section" id="sec-churn">
+        <div class="page-header"><div><div class="page-title">Churn Intelligence</div><div class="page-subtitle">Random Forest churn prediction model — identifying high-risk users for proactive intervention before disengagement</div></div></div>
+        <div class="g4" id="churn-kpis"></div>
+        <div class="g2">
+          <div class="card"><div class="card-title">🔬 Feature Importance — What Drives Churn</div><div class="chart-box"><canvas id="churn-features"></canvas></div></div>
+          <div class="card"><div class="card-title">📍 Churn Risk Scatter — Days Inactive vs Probability</div><div class="chart-box"><canvas id="churn-scatter"></canvas></div></div>
+        </div>
+        <div class="card g1"><div class="card-title">🚨 High-Risk Users — Top 20 by Churn Probability</div><div id="churn-table"></div></div>
+      </div>
+
+      <!-- ── PROFESSOR ANALYTICS ── -->
+      <div class="section" id="sec-professors">
+        <div class="page-header"><div><div class="page-title">Professor Analytics</div><div class="page-subtitle">Approval rate variance analysis — identifying operational bottlenecks in the professor review stage</div></div></div>
+        <div class="g4" id="prof-kpis"></div>
+        <div class="card g1"><div class="card-title">📊 Approval Rate by Professor</div><div class="chart-box" style="height:360px"><canvas id="prof-bars"></canvas></div></div>
+        <div class="card g1"><div class="card-title">📉 Deviation from Mean Approval Rate</div><div class="chart-box" style="height:300px"><canvas id="prof-deviation"></canvas></div></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/insights.js"></script>
+  <script src="js/segments.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

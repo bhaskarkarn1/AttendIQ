@@ -1,0 +1,101 @@
+[
+  {
+    "action_id": "action_001",
+    "priority": 1,
+    "category": "experiment",
+    "action_title": "Deploy \"timer\" variant for Timer vs No Timer",
+    "description": "A/B test shows timer improves quiz pass rate by 11.1% (p=0.000). Deploy to all users.",
+    "expected_impact": "+11.1% quiz pass rate",
+    "effort_level": "low"
+  },
+  {
+    "action_id": "action_002",
+    "priority": 2,
+    "category": "experiment",
+    "action_title": "Deploy \"timer\" variant for Timer vs No Timer",
+    "description": "A/B test shows timer improves avg session duration sec by 9.6% (p=0.009). Deploy to all users.",
+    "expected_impact": "+9.6% avg session duration sec",
+    "effort_level": "low"
+  },
+  {
+    "action_id": "action_003",
+    "priority": 3,
+    "category": "experiment",
+    "action_title": "Deploy \"notification\" variant for Notification vs No Notification",
+    "description": "A/B test shows notification improves days active by 15.4% (p=0.000). Deploy to all users.",
+    "expected_impact": "+15.4% days active",
+    "effort_level": "low"
+  },
+  {
+    "action_id": "action_004",
+    "priority": 4,
+    "category": "experiment",
+    "action_title": "Deploy \"notification\" variant for Notification vs No Notification",
+    "description": "A/B test shows notification improves total sessions by 17.8% (p=0.000). Deploy to all users.",
+    "expected_impact": "+17.8% total sessions",
+    "effort_level": "low"
+  },
+  {
+    "action_id": "action_005",
+    "priority": 5,
+    "category": "funnel",
+    "action_title": "Address: Biggest drop-off at Absence Declared",
+    "description": "27% of users drop off at the absence declared stage. This is the #1 conversion bottleneck.",
+    "expected_impact": "Impact score: 95%",
+    "effort_level": "medium"
+  },
+  {
+    "action_id": "action_006",
+    "priority": 6,
+    "category": "engagement",
+    "action_title": "Address: Low study time \u2192 high failure rate",
+    "description": "Users spending <3 minutes have 100% failure rate vs 27% for users spending more time.",
+    "expected_impact": "Impact score: 90%",
+    "effort_level": "medium"
+  },
+  {
+    "action_id": "action_007",
+    "priority": 7,
+    "category": "quality",
+    "action_title": "Address: prof_001 rejects 1.5x more than average",
+    "description": "prof_001 has 53% approval rate vs 82% average (1676 reviews). This is a potential bottleneck.",
+    "expected_impact": "Impact score: 85%",
+    "effort_level": "medium"
+  },
+  {
+    "action_id": "action_008",
+    "priority": 8,
+    "category": "quality",
+    "action_title": "Address: prof_002 rejects 1.5x more than average",
+    "description": "prof_002 has 54% approval rate vs 82% average (2295 reviews). This is a potential bottleneck.",
+    "expected_impact": "Impact score: 85%",
+    "effort_level": "medium"
+  },
+  {
+    "category": "engagement",
+    "action_title": "Add progress indicators to PDF viewer",
+    "description": "Users who spend more time on PDFs pass quizzes at higher rates. Adding progress tracking and time-spent indicators can increase PDF engagement by ~20%.",
+    "expected_impact": "Improving PDF engagement by +20% can increase pass rate by +12%",
+    "effort_level": "medium",
+    "action_id": "action_009",
+    "priority": 9
+  },
+  {
+    "category": "retention",
+    "action_title": "Implement Day 1-3 onboarding flow",
+    "description": "Biggest retention drop occurs in first week. A guided onboarding with milestone rewards can improve D7 retention by 15-25%.",
+    "expected_impact": "+15-25% D7 retention improvement",
+    "effort_level": "high",
+    "action_id": "action_010",
+    "priority": 10
+  },
+  {
+    "category": "quality",
+    "action_title": "Standardize professor grading criteria",
+    "description": "Some professors reject 2x more than average. Publishing grading rubrics and calibration sessions can normalize approval rates.",
+    "expected_impact": "+10-15% overall approval rate",
+    "effort_level": "medium",
+    "action_id": "action_011",
+    "priority": 11
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "stage": "app_open",
+    "count": 156374,
+    "stage_order": 1,
+    "conversion_rate": 1.0,
+    "dropoff_rate": 0,
+    "overall_conversion": 1.0
+  },
+  {
+    "stage": "absence_declared",
+    "count": 114718,
+    "stage_order": 2,
+    "conversion_rate": 0.7336,
+    "dropoff_rate": 0.2664,
+    "overall_conversion": 0.7336
+  },
+  {
+    "stage": "pdf_viewed",
+    "count": 90918,
+    "stage_order": 3,
+    "conversion_rate": 0.7925,
+    "dropoff_rate": 0.2075,
+    "overall_conversion": 0.5814
+  },
+  {
+    "stage": "quiz_started",
+    "count": 68082,
+    "stage_order": 4,
+    "conversion_rate": 0.7488,
+    "dropoff_rate": 0.2512,
+    "overall_conversion": 0.4354
+  },
+  {
+    "stage": "quiz_submitted",
+    "count": 57792,
+    "stage_order": 5,
+    "conversion_rate": 0.8489,
+    "dropoff_rate": 0.1511,
+    "overall_conversion": 0.3696
+  },
+  {
+    "stage": "quiz_passed",
+    "count": 46900,
+    "stage_order": 6,
+    "conversion_rate": 0.8115,
+    "dropoff_rate": 0.1885,
+    "overall_conversion": 0.2999
+  },
+  {
+    "stage": "approved",
+    "count": 38514,
+    "stage_order": 7,
+    "conversion_rate": 0.8212,
+    "dropoff_rate": 0.1788,
+    "overall_conversion": 0.2463
+  }
+]
