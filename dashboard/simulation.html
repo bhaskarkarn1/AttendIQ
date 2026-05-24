@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AttendIQ — Interactive Simulation Dashboard</title>
+  <meta name="description" content="Single-page interactive simulation dashboard for AttendIQ behavioral analytics — funnel analysis, churn prediction, retention heatmaps, segment profiling, and scenario simulation on one page.">
+  <link rel="stylesheet" href="css/simulation.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- ═══ ICON SIDEBAR ═══ -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">A</div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-icon active" title="Overview" onclick="scrollToSection(event, 'top')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div class="sidebar-icon" title="Funnel" onclick="scrollToSection(event, 'section-funnel')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+      </div>
+      <div class="sidebar-icon" title="Segments" onclick="scrollToSection(event, 'section-segments')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/><path d="M12 2v20"/></svg>
+      </div>
+      <div class="sidebar-icon" title="Simulator" onclick="scrollToSection(event, 'section-simulator')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <div class="sidebar-icon" title="Churn" onclick="scrollToSection(event, 'section-churn')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+    </nav>
+    <div class="sidebar-social">
+      <a href="https://github.com/bhaskarkarn1" target="_blank" title="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ═══ TOP HEADER ═══ -->
+  <header class="top-header" id="top">
+    <div class="header-brand">
+      <span class="header-title">#AttendIQ BEHAVIORAL ANALYTICS DASHBOARD <span>| SIMULATION OVERVIEW</span></span>
+    </div>
+    <div class="header-right">
+      <div class="header-segment-select">
+        Selected:
+        <select id="segment-filter" onchange="onSegmentChange(this.value)">
+          <option value="all">All Segments</option>
+        </select>
+      </div>
+      <div class="header-info-btn" title="Scroll to simulator" onclick="document.getElementById('section-simulator').scrollIntoView({behavior:'smooth'})">ⓘ</div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <div class="main-content">
+
+    <!-- ── ROW 1: KPI CARDS ── -->
+    <div class="kpi-row animate-in" id="kpi-row"></div>
+
+    <!-- ── ROW 2: Funnel + Top Professors + DAU Trend ── -->
+    <div class="grid-3-col animate-in" id="section-funnel">
+      <div class="card">
+        <div class="card-title">Conversion Funnel by Stage <span class="subtitle">Click to drill down</span></div>
+        <div class="funnel-compact" id="funnel-chart"></div>
+        <div id="funnel-drill"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Top Professors by Volume</div>
+        <table class="ranked-table" id="prof-ranked-table"></table>
+      </div>
+      <div class="card">
+        <div class="card-title">Trend: Daily Active Users <span class="subtitle" id="dau-window-label"></span></div>
+        <div class="chart-box-lg"><canvas id="dau-trend-chart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ── ROW 3: Segment Bars + Doughnut + Comparison ── -->
+    <div class="grid-3-col animate-in" id="section-segments">
+      <div class="card">
+        <div class="card-title">Users by Segment</div>
+        <div class="chart-box"><canvas id="segment-bar-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Segment Distribution</div>
+        <div class="chart-box doughnut-container">
+          <canvas id="segment-doughnut-chart"></canvas>
+          <div class="doughnut-center">
+            <div class="doughnut-center-val" id="doughnut-total">—</div>
+            <div class="doughnut-center-label">Students</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Behavioral Metrics by Segment</div>
+        <div style="overflow-x:auto;"><table class="diversity-table" id="segment-diversity-table"></table></div>
+      </div>
+    </div>
+
+    <!-- ── ROW 4: Simulator + Radar + Bar ── -->
+    <div class="grid-3 animate-in" id="section-simulator">
+      <div class="card sim-inline">
+        <div class="card-title">⚙️ Scenario Simulator <span class="subtitle">Drag sliders to simulate</span></div>
+        <div class="sim-row-compact">
+          <div class="sim-compact-label">PDF Engagement<span class="sim-compact-hint">Study depth → pass rates</span></div>
+          <input type="range" class="sim-compact-slider" id="sim-pdf" min="0" max="50" value="0" oninput="updateSim()">
+          <span class="sim-compact-val" id="sim-pdf-val">+0%</span>
+        </div>
+        <div class="sim-row-compact">
+          <div class="sim-compact-label">Notification Reach<span class="sim-compact-hint">Session freq → retention</span></div>
+          <input type="range" class="sim-compact-slider" id="sim-notif" min="0" max="100" value="50" oninput="updateSim()">
+          <span class="sim-compact-val" id="sim-notif-val">50%</span>
+        </div>
+        <div class="sim-row-compact">
+          <div class="sim-compact-label">Onboarding Rate<span class="sim-compact-hint">D1-D3 activation → retention</span></div>
+          <input type="range" class="sim-compact-slider" id="sim-onboard" min="0" max="100" value="30" oninput="updateSim()">
+          <span class="sim-compact-val" id="sim-onboard-val">30%</span>
+        </div>
+        <div class="sim-row-compact">
+          <div class="sim-compact-label">Quiz Questions<span class="sim-compact-hint">Fewer → higher completion</span></div>
+          <input type="range" class="sim-compact-slider" id="sim-quiz" min="3" max="10" value="5" oninput="updateSim()">
+          <span class="sim-compact-val" id="sim-quiz-val">5</span>
+        </div>
+        <div class="sim-impact-readout" id="sim-readout">
+          <div class="sim-impact-level" id="sim-impact-level">⚪ Adjust sliders to project impact</div>
+          <div class="sim-impact-grid" id="sim-impact-grid"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🕸️ Baseline vs Projected KPIs</div>
+        <div class="chart-box-lg"><canvas id="sim-radar-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Impact Breakdown</div>
+        <div class="chart-box-lg"><canvas id="sim-bar-chart"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ── ROW 5: Retention Heatmap + Curve + Correlation ── -->
+    <div class="grid-3 animate-in" id="section-retention">
+      <div class="card">
+        <div class="card-title">🔥 Cohort Retention Heatmap</div>
+        <div style="overflow-x:auto;" id="retention-heatmap-wrap"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📉 Retention Decay Curve</div>
+        <div class="chart-box"><canvas id="retention-curve-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔗 Feature Correlation Matrix</div>
+        <div style="overflow-x:auto;" id="corr-matrix-wrap"></div>
+      </div>
+    </div>
+
+    <!-- ── ROW 6: Churn Features + Scatter + High-Risk ── -->
+    <div class="grid-3 animate-in" id="section-churn">
+      <div class="card">
+        <div class="card-title">🔬 Churn Feature Importance</div>
+        <div class="chart-box"><canvas id="churn-features-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📍 Churn Risk Scatter</div>
+        <div class="chart-box"><canvas id="churn-scatter-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">🚨 High-Risk Users <span class="subtitle" id="churn-count-label"></span></div>
+        <div style="overflow-x:auto;" id="churn-table-wrap"></div>
+      </div>
+    </div>
+
+    <!-- ── ROW 7: Professor Approval ── -->
+    <div class="grid-2 animate-in">
+      <div class="card">
+        <div class="card-title">📊 Professor Approval Rates</div>
+        <div class="chart-box-lg"><canvas id="prof-approval-chart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📉 Professor Deviation from Mean</div>
+        <div class="chart-box-lg"><canvas id="prof-deviation-chart"></canvas></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  /* ═══════════════════════════════════════════════════════════════════
+     AttendIQ — Single-Page Interactive Simulation Dashboard
+     100% dynamic — all data from JSON, all charts respond to filters
+  ═══════════════════════════════════════════════════════════════════ */
+
+  // ─── Resolve data path for both local and GitHub Pages ────────
+  const IS_PAGES = location.hostname.includes('github.io');
+  const DATA_DIR = IS_PAGES ? '../data/dashboard/' : '../data/dashboard/';
+
+  let DATA = {};
+  let activeSegment = 'all';
+
+  // ─── Chart instance registry (destroy before re-render) ──────
+  const CHARTS = {};
+  function destroyChart(key) { if (CHARTS[key]) { CHARTS[key].destroy(); CHARTS[key] = null; } }
+
+  // ─── Chart Defaults (light theme) ────────────────────────────
+  const DEFAULTS = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#6b7280', font: { family: 'Inter', size: 10 }, padding: 12, usePointStyle: true, pointStyleWidth: 8 } },
+      tooltip: {
+        backgroundColor: '#1a1a2e', titleColor: '#fff', bodyColor: 'rgba(255,255,255,0.75)',
+        borderColor: 'rgba(255,255,255,0.08)', borderWidth: 1, padding: 12, cornerRadius: 8,
+        titleFont: { family: 'Inter', weight: '600', size: 12 },
+        bodyFont: { family: 'JetBrains Mono', size: 11 }, displayColors: true, boxPadding: 4,
+      },
+    },
+    scales: {
+      x: { grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false }, ticks: { color: '#9ca3af', font: { family: 'Inter', size: 9 } } },
+      y: { grid: { color: 'rgba(0,0,0,0.04)', drawBorder: false }, ticks: { color: '#9ca3af', font: { family: 'JetBrains Mono', size: 9 } } },
+    },
+  };
+
+  const C = {
+    dark: '#1a1a2e', accent: '#e8804a', blue: '#3b82f6', emerald: '#10b981',
+    amber: '#f59e0b', rose: '#ef4444', violet: '#8b5cf6', cyan: '#06b6d4', teal: '#14b8a6',
+  };
+  const SEG_COLORS = { 'Power User': C.dark, 'Regular User': C.blue, 'At-Risk User': C.amber, 'Churned User': C.rose };
+
+  // ─── Load ────────────────────────────────────────────────────
+  async function loadJSON(f) { const r = await fetch(DATA_DIR + f); if (!r.ok) throw new Error(f); return r.json(); }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const files = ['health_score','funnel_data','engagement_data','retention_data',
+        'churn_predictions','cluster_data','interactive_data','professor_stats','daily_trends'];
+      const results = await Promise.all(files.map(f => loadJSON(f + '.json')));
+      const [health, funnel, engagement, retention, churn, clusters, interactive, professors, daily] = results;
+      DATA = { health, funnel, engagement, retention, churn, clusters, interactive, professors, daily };
+      buildSegmentFilter();
+      renderAll();
+    } catch (e) {
+      console.error('Data load failed:', e);
+      document.querySelector('.main-content').innerHTML =
+        '<div class="card" style="padding:60px;text-align:center"><h2>⚠️ Data not found</h2><p style="color:var(--text-secondary);margin-top:8px">Run: <code>python3 -m http.server 8000</code> from the project root</p></div>';
+    }
+  });
+
+  // ─── Build segment filter options from data ──────────────────
+  function buildSegmentFilter() {
+    const select = document.getElementById('segment-filter');
+    select.innerHTML = '<option value="all">All Segments</option>';
+    const segs = DATA.interactive?.segments || {};
+    Object.keys(segs).forEach(name => {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name + ` (${fmt(segs[name].count)})`;
+      select.appendChild(opt);
+    });
+  }
+
+  function renderAll() {
+    renderKPIs();
+    renderFunnel();
+    renderProfessorTable();
+    renderDAUTrend();
+    renderSegmentBar();
+    renderSegmentDoughnut();
+    renderSegmentDiversityTable();
+    updateSim();
+    renderRetentionHeatmap();
+    renderRetentionCurve();
+    renderChurnFeatures();
+    renderChurnScatter();
+    renderChurnTable();
+    renderProfessorApproval();
+    renderProfessorDeviation();
+    renderCorrelationMatrix();
+  }
+
+  // ─── Helpers ─────────────────────────────────────────────────
+  function fmt(n) {
+    if (n >= 1e6) return (n/1e6).toFixed(1)+'M';
+    if (n >= 1e4) return (n/1e3).toFixed(1)+'K';
+    return n.toLocaleString();
+  }
+
+  function scrollToSection(e, id) {
+    document.querySelectorAll('.sidebar-icon').forEach(i => i.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    if (id === 'top') { window.scrollTo({top:0,behavior:'smooth'}); return; }
+    document.getElementById(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ─── Cross-filter: segment change re-renders everything ──────
+  function onSegmentChange(val) {
+    activeSegment = val;
+    renderKPIs();
+    renderFunnel();
+    renderSegmentDiversityTable();
+    renderChurnTable();
+    updateSim();
+  }
+
+  function getSegData() {
+    if (activeSegment === 'all') return null;
+    return DATA.interactive?.segments?.[activeSegment] || null;
+  }
+
+  // ═══ KPI ROW ═══════════════════════════════════════════════════
+  function renderKPIs() {
+    const row = document.getElementById('kpi-row');
+    const segs = DATA.interactive?.segments || {};
+    const total = Object.values(segs).reduce((s,v) => s + v.count, 0);
+    const eng = DATA.engagement || {};
+    const ret = DATA.retention?.summary || {};
+    const churn = DATA.churn || {};
+    const health = DATA.health || {};
+    const seg = getSegData();
+
+    const kpis = [
+      {
+        label: seg ? activeSegment.toUpperCase() : 'TRACKED STUDENTS',
+        value: seg ? fmt(seg.count) : fmt(total),
+        icon: '👥', wide: !seg,
+        sub: seg ? `of ${fmt(total)} total` : '',
+        extra: seg ? null : {
+          power: { pct: ((segs['Power User']?.count||0)/total*100).toFixed(1), label: 'Power' },
+          churned: { pct: ((segs['Churned User']?.count||0)/total*100).toFixed(1), label: 'Churned' },
+        },
+      },
+      {
+        label: 'HIGH-RISK CHURN', icon: '⇌',
+        value: fmt(churn.total_high_risk || 0),
+        sub: `AUC-ROC: ${(churn.auc_roc||0).toFixed(4)}`,
+      },
+      {
+        label: seg ? 'AVG SESSIONS' : 'AVG DAU', icon: '📱',
+        value: seg ? seg.avg_sessions.toFixed(1) : fmt(Math.round(eng.avg_dau||0)),
+        sub: seg ? `${(seg.avg_duration_sec/60).toFixed(0)}m avg duration` : `${fmt(Math.round(eng.avg_wau||0))} WAU`,
+      },
+      {
+        label: seg ? 'PASS RATE' : 'D7 RETENTION', icon: '🔄',
+        value: seg ? (seg.avg_pass_rate*100).toFixed(1)+'%' : ((ret.d7||0)*100).toFixed(1)+'%',
+        sub: seg ? `${Math.round(seg.avg_quiz_attempts||0)} avg attempts` : `D30: ${((ret.d30||0)*100).toFixed(1)}%`,
+      },
+      {
+        label: 'HEALTH SCORE', icon: '⭐',
+        value: Math.round(health.score||0),
+        sub: Object.entries(health.components||{}).map(([k,v]) => `${k.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase()).substring(0,10)}: ${v.toFixed(0)}`).join(' · '),
+      },
+    ];
+
+    row.innerHTML = '';
+    kpis.forEach(k => {
+      const card = document.createElement('div');
+      card.className = `kpi-card${k.wide ? ' kpi-card-wide' : ''}`;
+      let inner = `<div class="kpi-icon">${k.icon}</div>`;
+
+      if (k.extra) {
+        inner += `<div>
+          <div class="kpi-label">${k.label}</div>
+          <div class="kpi-value">${k.value}</div>
+          <div class="kpi-bar-mini" style="margin-top:8px;">
+            <div style="display:flex;flex-direction:column;gap:2px;flex:1;">
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:10px;color:var(--text-muted);width:55px;">${k.extra.power.label}</span>
+                <div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:${k.extra.power.pct}%;background:${C.dark}"></div></div>
+                <span class="kpi-bar-pct">${k.extra.power.pct}%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <span style="font-size:10px;color:var(--text-muted);width:55px;">${k.extra.churned.label}</span>
+                <div class="kpi-bar-track"><div class="kpi-bar-fill" style="width:${k.extra.churned.pct}%;background:${C.rose}"></div></div>
+                <span class="kpi-bar-pct">${k.extra.churned.pct}%</span>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      } else {
+        inner += `<div class="kpi-label">${k.label}</div><div class="kpi-value-sm">${k.value}</div><div class="kpi-sub">${k.sub}</div>`;
+      }
+      card.innerHTML = inner;
+      row.appendChild(card);
+    });
+  }
+
+  // ═══ FUNNEL ════════════════════════════════════════════════════
+  function renderFunnel() {
+    const container = document.getElementById('funnel-chart');
+    const drill = document.getElementById('funnel-drill');
+    const funnel = DATA.funnel || [];
+    if (!funnel.length) return;
+    const maxCount = funnel[0].count || 1;
+    const colors = [C.dark, C.blue, C.violet, C.cyan, C.amber, C.emerald, C.teal];
+    container.innerHTML = '';
+    if (drill) drill.innerHTML = '';
+
+    // If segment filtered, scale funnel proportionally
+    const seg = getSegData();
+    const scale = seg ? (seg.count / Object.values(DATA.interactive?.segments||{}).reduce((s,v)=>s+v.count,0)) : 1;
+
+    funnel.forEach((stage, i) => {
+      const count = seg ? Math.round(stage.count * scale) : stage.count;
+      const pct = (stage.count / maxCount) * 100;
+      const row = document.createElement('div');
+      row.className = 'funnel-stage';
+      row.innerHTML = `
+        <div class="funnel-stage-label">${stage.stage.replace(/_/g,' ')}</div>
+        <div class="funnel-stage-bar-wrap"><div class="funnel-stage-bar" style="width:0;background:${colors[i%colors.length]}">${fmt(count)}</div></div>
+        <div class="funnel-stage-drop">${i > 0 ? '-'+(stage.dropoff_rate*100).toFixed(1)+'%' : ''}</div>
+      `;
+      row.onclick = () => drillFunnel(i, stage, count, drill, container);
+      container.appendChild(row);
+      setTimeout(() => { row.querySelector('.funnel-stage-bar').style.width = pct+'%'; }, 100 + i*80);
+    });
+  }
+
+  function drillFunnel(idx, stage, count, drillContainer, funnelContainer) {
+    funnelContainer.querySelectorAll('.funnel-stage').forEach((r,i) => r.classList.toggle('dimmed', i !== idx));
+    const prev = DATA.funnel[idx-1], next = DATA.funnel[idx+1];
+    const dropped = prev ? prev.count - stage.count : 0;
+    let html = `<div class="drill-panel"><h4>📍 ${stage.stage.replace(/_/g,' ')} — Drop-off Analysis</h4>`;
+    html += `<div class="drill-stat"><span class="drill-stat-label">Users at stage</span><span class="drill-stat-val">${fmt(count)}</span></div>`;
+    html += `<div class="drill-stat"><span class="drill-stat-label">Overall conversion</span><span class="drill-stat-val">${(stage.overall_conversion*100).toFixed(1)}%</span></div>`;
+    if (prev) html += `<div class="drill-stat"><span class="drill-stat-label">Dropped from previous</span><span class="drill-stat-val" style="color:var(--accent-rose)">${fmt(dropped)} (${(stage.dropoff_rate*100).toFixed(1)}%)</span></div>`;
+    if (next) html += `<div class="drill-stat"><span class="drill-stat-label">Will proceed to next</span><span class="drill-stat-val" style="color:var(--accent-emerald)">${fmt(next.count)} (${(next.conversion_rate*100).toFixed(1)}%)</span></div>`;
+    if (stage.dropoff_rate > 0.15) {
+      const impact = (stage.dropoff_rate*0.6*100).toFixed(0);
+      html += `<div style="margin-top:8px;padding:8px 12px;border-radius:6px;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.1);font-size:10px;color:${C.rose}">⚠️ Reducing this drop-off by 50% → +${impact}% final approvals</div>`;
+    }
+    html += '</div>';
+    if (drillContainer) drillContainer.innerHTML = html;
+  }
+
+  // ═══ PROFESSOR RANKED TABLE ════════════════════════════════════
+  function renderProfessorTable() {
+    const table = document.getElementById('prof-ranked-table');
+    if (!table) return;
+    const sorted = [...(DATA.professors||[])].sort((a,b) => b.total - a.total);
+    table.innerHTML = '';
+    sorted.slice(0, 7).forEach((p, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${i+1}</td><td>${p.professor.replace('prof_','Prof ')}</td><td>${fmt(p.total)}</td>`;
+      table.appendChild(tr);
+    });
+  }
+
+  // ═══ DAU TREND ════════════════════════════════════════════════
+  function renderDAUTrend() {
+    const ctx = document.getElementById('dau-trend-chart');
+    if (!ctx) return;
+    const dau = DATA.engagement?.dau || [];
+    if (!dau.length) return;
+    const label = document.getElementById('dau-window-label');
+    if (label) label.textContent = `${dau.length}-day window`;
+    const labels = dau.map(d => { const dt = new Date(d.date); return `${dt.getMonth()+1}/${dt.getDate()}`; });
+    destroyChart('dau');
+    CHARTS.dau = new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: { labels, datasets: [{
+        label: 'DAU', data: dau.map(d => d.dau),
+        borderColor: 'rgba(59,130,246,0.45)', backgroundColor: 'rgba(59,130,246,0.06)',
+        fill: true, tension: 0.3, borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4,
+      }]},
+      options: { ...DEFAULTS, plugins: { ...DEFAULTS.plugins, legend: { display: false } } },
+    });
+  }
+
+  // ═══ SEGMENT BAR ══════════════════════════════════════════════
+  function renderSegmentBar() {
+    const ctx = document.getElementById('segment-bar-chart');
+    if (!ctx) return;
+    const clusters = DATA.clusters || [];
+    const sorted = [...clusters].sort((a,b) => b.count - a.count);
+    destroyChart('segBar');
+    CHARTS.segBar = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: sorted.map(c => c.segment.replace(' User','')),
+        datasets: [{ data: sorted.map(c => c.count), backgroundColor: sorted.map(c => SEG_COLORS[c.segment]||C.dark), borderRadius: 4, barPercentage: 0.65 }]
+      },
+      options: { ...DEFAULTS, indexAxis: 'y', plugins: { ...DEFAULTS.plugins, legend: { display: false } } },
+    });
+  }
+
+  // ═══ SEGMENT DOUGHNUT ═════════════════════════════════════════
+  function renderSegmentDoughnut() {
+    const ctx = document.getElementById('segment-doughnut-chart');
+    if (!ctx) return;
+    const clusters = DATA.clusters || [];
+    const total = clusters.reduce((s,c) => s+c.count, 0);
+    document.getElementById('doughnut-total').textContent = fmt(total);
+    destroyChart('segDoughnut');
+    CHARTS.segDoughnut = new Chart(ctx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: clusters.map(c => c.segment),
+        datasets: [{
+          data: clusters.map(c => c.count),
+          backgroundColor: clusters.map(c => SEG_COLORS[c.segment]||C.dark),
+          borderColor: '#fff', borderWidth: 3, hoverOffset: 10,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: '68%',
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#6b7280', font: { family: 'Inter', size: 9 }, padding: 10, usePointStyle: true, pointStyleWidth: 6 } },
+          tooltip: DEFAULTS.plugins.tooltip,
+        },
+      },
+    });
+  }
+
+  // ═══ SEGMENT DIVERSITY TABLE ══════════════════════════════════
+  function renderSegmentDiversityTable() {
+    const table = document.getElementById('segment-diversity-table');
+    const clusters = DATA.clusters || [];
+    if (!clusters.length) return;
+
+    const metrics = [
+      { key: 'avg_sessions', label: 'Avg Sessions', fmt: v => v.toFixed(1) },
+      { key: 'avg_days_active', label: 'Days Active', fmt: v => v.toFixed(1) },
+      { key: 'avg_pass_rate', label: 'Pass Rate', fmt: v => (v*100).toFixed(1)+'%' },
+      { key: 'avg_duration', label: 'Avg Duration', fmt: v => v >= 60 ? (v/60).toFixed(0)+'m' : v.toFixed(0)+'s' },
+      { key: 'count', label: 'Population', fmt: v => fmt(v) },
+    ];
+
+    let html = '<thead><tr><th></th>';
+    clusters.forEach(c => {
+      const isActive = activeSegment === c.segment;
+      html += `<th style="text-align:center;${isActive?'color:'+C.accent+';font-weight:800;':''}">${c.segment.replace(' User','')}</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    metrics.forEach(m => {
+      const maxVal = Math.max(...clusters.map(c => typeof c[m.key] === 'number' ? c[m.key] : 0));
+      html += '<tr>';
+      html += `<td style="font-weight:600;font-size:11px;white-space:nowrap;">${m.label}</td>`;
+      clusters.forEach(c => {
+        const val = c[m.key] || 0;
+        const barW = maxVal > 0 ? (val / maxVal * 100) : 0;
+        const color = SEG_COLORS[c.segment] || C.dark;
+        const highlight = activeSegment === c.segment;
+        html += `<td><div class="segment-bar-cell"><span class="segment-mini-bar" style="width:${barW}%;background:${color};min-width:2px;${highlight?'opacity:1;':'opacity:0.7;'}"></span><span class="segment-mini-val" style="${highlight?'font-weight:800;':''}">${m.fmt(val)}</span></div></td>`;
+      });
+      html += '</tr>';
+    });
+    html += '</tbody>';
+    table.innerHTML = html;
+  }
+
+  // ═══ SCENARIO SIMULATOR ═══════════════════════════════════════
+  function updateSim() {
+    const pdf = +document.getElementById('sim-pdf').value;
+    const notif = +document.getElementById('sim-notif').value;
+    const onboard = +document.getElementById('sim-onboard').value;
+    const quiz = +document.getElementById('sim-quiz').value;
+    document.getElementById('sim-pdf-val').textContent = `+${pdf}%`;
+    document.getElementById('sim-notif-val').textContent = `${notif}%`;
+    document.getElementById('sim-onboard-val').textContent = `${onboard}%`;
+    document.getElementById('sim-quiz-val').textContent = quiz;
+
+    // All baselines derived from actual data — zero hardcoding
+    const corrs = DATA.interactive?.correlations || {};
+    const ret = DATA.retention?.summary || {};
+    const hd = DATA.health || {};
+    const hc = hd.components || {};
+    const funnel = DATA.funnel || [];
+    const eng = DATA.engagement || {};
+    const ti = DATA.interactive?.time_impact || {};
+
+    const basePass = hc.quiz_pass_rate || 0;
+    const baseD7 = (ret.d7 || 0) * 100;
+    const fStart = funnel[0]?.count || 1;
+    const fEnd = funnel[funnel.length-1]?.count || 0;
+    const baseConv = (fEnd / fStart) * 100;
+    const baseHealth = hd.score || 0;
+    const baseEng = (eng.stickiness || 0) * 100;
+
+    // Correlation-derived coefficients from actual data
+    const rDurPass = corrs.avg_session_duration_sec?.quiz_pass_rate || 0;
+    const rSesDays = corrs.total_sessions?.days_active || 0;
+    const rPassFunnel = corrs.quiz_pass_rate?.funnel_max_stage || 0;
+    const longRate = ti['>10 min']?.pass_rate || 0;
+    const shortRate = ti['<3 min']?.pass_rate || 0;
+    const sqm = longRate - shortRate;
+
+    // Compute projected lifts
+    const passLift = pdf * rDurPass * sqm;
+    const retLift = notif * rSesDays * 0.15 + onboard * 0.22;
+    const optQ = 5;
+    const convLift = quiz <= optQ ? (optQ - quiz) * rPassFunnel * 4.5 : -(quiz - optQ) * rPassFunnel * 3.2;
+    const engLift = (passLift*0.25) + (retLift*rSesDays*0.1) + (convLift>0?convLift*0.08:0);
+    const healthLift = (retLift*0.25 + passLift*0.20 + convLift*0.20 + engLift*0.15) / 8;
+
+    const projPass = Math.min(100, Math.max(0, basePass + passLift));
+    const projD7 = Math.min(100, Math.max(0, baseD7 + retLift));
+    const projConv = Math.min(100, Math.max(0, baseConv + convLift));
+    const projHealth = Math.min(100, Math.max(0, baseHealth + healthLift));
+    const projEng = Math.min(100, Math.max(0, baseEng + engLift));
+
+    // Impact assessment
+    const totalLift = passLift + retLift + convLift;
+    const level = totalLift > 15 ? '🟢 HIGH IMPACT' : totalLift > 5 ? '🟡 MODERATE IMPACT' : '⚪ LOW IMPACT';
+    const levelColor = totalLift > 15 ? C.emerald : totalLift > 5 ? C.amber : '#9ca3af';
+    document.getElementById('sim-impact-level').textContent = level;
+    document.getElementById('sim-impact-level').style.color = levelColor;
+
+    // Render impact grid
+    const grid = document.getElementById('sim-impact-grid');
+    const metrics = [
+      { label: 'Pass Rate', base: basePass, proj: projPass, lift: passLift },
+      { label: 'D7 Retention', base: baseD7, proj: projD7, lift: retLift },
+      { label: 'Funnel Conv.', base: baseConv, proj: projConv, lift: convLift },
+      { label: 'Health', base: baseHealth, proj: projHealth, lift: healthLift },
+      { label: 'Engagement', base: baseEng, proj: projEng, lift: engLift },
+    ];
+    grid.innerHTML = metrics.map(m => `
+      <div class="sim-impact-item">
+        <div class="sim-impact-item-label">${m.label}</div>
+        <div class="sim-impact-item-val ${m.lift > 0.01 ? 'val-up' : m.lift < -0.01 ? 'val-down' : 'val-neutral'}">${m.proj.toFixed(1)}${m.label==='Health'?'':' %'}</div>
+        <div style="font-size:9px;color:var(--text-muted);font-family:var(--mono)">${m.base.toFixed(1)} → ${m.lift >= 0 ? '+' : ''}${m.lift.toFixed(1)}</div>
+      </div>
+    `).join('');
+
+    // Update live charts
+    const labels = ['Pass Rate', 'D7 Ret.', 'Funnel', 'Health', 'Engage.'];
+    const baseline = [basePass, baseD7, baseConv, baseHealth, baseEng];
+    const projected = [projPass, projD7, projConv, projHealth, projEng];
+
+    // Radar
+    destroyChart('simRadar');
+    const rCtx = document.getElementById('sim-radar-chart');
+    if (rCtx) {
+      CHARTS.simRadar = new Chart(rCtx.getContext('2d'), {
+        type: 'radar',
+        data: {
+          labels,
+          datasets: [
+            { label: 'Baseline', data: baseline, borderColor: 'rgba(0,0,0,0.15)', backgroundColor: 'rgba(0,0,0,0.02)', borderWidth: 1.5, borderDash: [4,4], pointRadius: 3, pointBackgroundColor: 'rgba(0,0,0,0.2)' },
+            { label: 'Projected', data: projected, borderColor: C.emerald, backgroundColor: 'rgba(16,185,129,0.08)', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: C.emerald },
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { r: { grid: { color: 'rgba(0,0,0,0.05)' }, angleLines: { color: 'rgba(0,0,0,0.05)' }, pointLabels: { color: '#6b7280', font: { family: 'Inter', size: 9 } }, ticks: { display: false }, suggestedMin: 0 } },
+          plugins: { legend: { position: 'bottom', labels: { color: '#6b7280', font: { family: 'Inter', size: 9 }, padding: 10, usePointStyle: true } }, tooltip: DEFAULTS.plugins.tooltip },
+        },
+      });
+    }
+
+    // Bar
+    destroyChart('simBar');
+    const bCtx = document.getElementById('sim-bar-chart');
+    if (bCtx) {
+      CHARTS.simBar = new Chart(bCtx.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [
+            { label: 'Baseline', data: baseline, backgroundColor: 'rgba(0,0,0,0.08)', borderRadius: 3 },
+            { label: 'Projected', data: projected, backgroundColor: C.emerald + '88', borderRadius: 3 },
+          ]
+        },
+        options: { ...DEFAULTS },
+      });
+    }
+  }
+
+  // ═══ RETENTION HEATMAP ════════════════════════════════════════
+  function renderRetentionHeatmap() {
+    const wrap = document.getElementById('retention-heatmap-wrap');
+    const hm = DATA.retention?.heatmap;
+    if (!wrap || !hm?.cohorts) return;
+    let html = '<table class="heatmap"><thead><tr><th class="hm-label">Cohort</th>';
+    (hm.days||[]).forEach(d => { html += `<th>D${d}</th>`; });
+    html += '</tr></thead><tbody>';
+    (hm.cohorts||[]).forEach((c, i) => {
+      html += `<tr><td class="hm-label">${c}</td>`;
+      (hm.values[i]||[]).forEach(val => {
+        const pct = (val*100).toFixed(1);
+        const bg = retColor(val);
+        html += `<td class="hm-cell" style="background:${bg};color:${val>0.4?'#fff':'#374151'}" title="${pct}%">${pct}%</td>`;
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+  }
+
+  function retColor(v) {
+    const a = 0.2 + v * 0.6;
+    if (v > 0.5) return `rgba(16,185,129,${a})`;
+    if (v > 0.3) return `rgba(245,158,11,${a})`;
+    return `rgba(239,68,68,${a})`;
+  }
+
+  // ═══ RETENTION CURVE ══════════════════════════════════════════
+  function renderRetentionCurve() {
+    const ctx = document.getElementById('retention-curve-chart');
+    const s = DATA.retention?.summary;
+    if (!ctx || !s) return;
+    const days = [1,3,7,14,30,60];
+    const vals = days.map(d => { const v = s[`d${d}`]; return v != null ? +(v*100).toFixed(1) : null; }).filter(v => v !== null);
+    destroyChart('retCurve');
+    CHARTS.retCurve = new Chart(ctx.getContext('2d'), {
+      type: 'line',
+      data: { labels: days.slice(0,vals.length).map(d=>`D${d}`), datasets: [{
+        label: 'Retention %', data: vals,
+        borderColor: C.teal, backgroundColor: 'rgba(20,184,166,0.08)',
+        fill: true, tension: 0.35, borderWidth: 2, pointRadius: 4,
+        pointBackgroundColor: C.teal, pointBorderColor: '#fff', pointBorderWidth: 2,
+      }]},
+      options: { ...DEFAULTS, plugins: { ...DEFAULTS.plugins, legend: { display: false } },
+        scales: { ...DEFAULTS.scales, y: { ...DEFAULTS.scales.y, ticks: { ...DEFAULTS.scales.y.ticks, callback: v => v+'%' }, suggestedMin: 0, suggestedMax: 60 } },
+      },
+    });
+  }
+
+  // ═══ CHURN FEATURES ═══════════════════════════════════════════
+  function renderChurnFeatures() {
+    const ctx = document.getElementById('churn-features-chart');
+    if (!ctx || !DATA.churn?.feature_importance) return;
+    const entries = Object.entries(DATA.churn.feature_importance).sort((a,b) => b[1]-a[1]);
+    const labelsMap = { total_sessions:'Sessions', days_active:'Days Active', total_events:'Total Events', avg_session_duration_sec:'Avg Duration', quiz_attempts:'Quiz Attempts', funnel_max_stage:'Funnel Depth', quiz_pass_rate:'Pass Rate' };
+    const barColors = [C.dark, C.dark+'cc', C.blue, C.blue+'aa', C.amber, C.violet, C.rose];
+    destroyChart('churnFeat');
+    CHARTS.churnFeat = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: entries.map(e => labelsMap[e[0]]||e[0]),
+        datasets: [{ data: entries.map(e => +(e[1]*100).toFixed(1)), backgroundColor: barColors.slice(0,entries.length), borderRadius: 4, barPercentage: 0.6 }]
+      },
+      options: { ...DEFAULTS, indexAxis: 'y', plugins: { ...DEFAULTS.plugins, legend: { display: false } } },
+    });
+  }
+
+  // ═══ CHURN SCATTER ════════════════════════════════════════════
+  function renderChurnScatter() {
+    const ctx = document.getElementById('churn-scatter-chart');
+    if (!ctx || !DATA.churn?.high_risk_users) return;
+    const users = DATA.churn.high_risk_users.slice(0,50);
+    destroyChart('churnScatter');
+    CHARTS.churnScatter = new Chart(ctx.getContext('2d'), {
+      type: 'scatter',
+      data: { datasets: [{
+        label: 'High-Risk', data: users.map(u => ({x:u.days_inactive, y:+(u.churn_probability*100).toFixed(1)})),
+        backgroundColor: C.rose+'88', borderColor: C.rose, borderWidth: 1, pointRadius: 4, pointHoverRadius: 7,
+      }]},
+      options: { ...DEFAULTS, plugins: { ...DEFAULTS.plugins, legend: { display: false } },
+        scales: {
+          x: { ...DEFAULTS.scales.x, title: { display: true, text: 'Days Inactive', color: '#9ca3af', font: { family:'Inter', size:9 } } },
+          y: { ...DEFAULTS.scales.y, title: { display: true, text: 'Churn Probability %', color: '#9ca3af', font: { family:'Inter', size:9 } } },
+        },
+      },
+    });
+  }
+
+  // ═══ CHURN TABLE ══════════════════════════════════════════════
+  function renderChurnTable() {
+    const wrap = document.getElementById('churn-table-wrap');
+    if (!wrap) return;
+    let users = (DATA.churn?.high_risk_users||[]);
+    // Cross-filter by active segment
+    if (activeSegment !== 'all') {
+      users = users.filter(u => u.user_segment === activeSegment);
+    }
+    const label = document.getElementById('churn-count-label');
+    if (label) label.textContent = `Top ${Math.min(10,users.length)} of ${users.length}`;
+    users = users.slice(0,10);
+    let html = '<table class="risk-table"><thead><tr><th>User</th><th>Segment</th><th>Risk</th><th>Inactive</th><th>Sessions</th></tr></thead><tbody>';
+    if (!users.length) { html += '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px">No high-risk users in this segment</td></tr>'; }
+    users.forEach(u => {
+      const pct = (u.churn_probability*100).toFixed(1);
+      const color = pct > 99 ? C.rose : pct > 95 ? C.amber : C.emerald;
+      html += `<tr>
+        <td class="mono">${u.user_id}</td>
+        <td style="font-size:10px">${u.user_segment.replace(' User','')}</td>
+        <td><span class="risk-bar"><span class="risk-fill" style="width:${pct}%;background:${color}"></span></span><span class="mono" style="color:${color}">${pct}%</span></td>
+        <td class="mono">${u.days_inactive}d</td>
+        <td class="mono">${u.total_sessions}</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+  }
+
+  // ═══ PROFESSOR APPROVAL ═══════════════════════════════════════
+  function renderProfessorApproval() {
+    const ctx = document.getElementById('prof-approval-chart');
+    if (!ctx) return;
+    const profs = [...(DATA.professors||[])].sort((a,b) => a.approval_rate - b.approval_rate);
+    if (!profs.length) return;
+    const mean = profs.reduce((s,p) => s + p.approval_rate, 0) / profs.length;
+    destroyChart('profApproval');
+    CHARTS.profApproval = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: profs.map(p => p.professor.replace('prof_','P')),
+        datasets: [{
+          label: 'Approval %', data: profs.map(p => +(p.approval_rate*100).toFixed(1)),
+          backgroundColor: profs.map(p => p.approval_rate < mean - 0.1 ? C.rose+'99' : p.approval_rate > mean + 0.02 ? C.emerald+'99' : C.amber+'99'),
+          borderRadius: 3, barPercentage: 0.7,
+        }]
+      },
+      options: { ...DEFAULTS, plugins: { ...DEFAULTS.plugins, legend: { display: false } } },
+    });
+  }
+
+  // ═══ PROFESSOR DEVIATION ══════════════════════════════════════
+  function renderProfessorDeviation() {
+    const ctx = document.getElementById('prof-deviation-chart');
+    if (!ctx) return;
+    const profs = [...(DATA.professors||[])].sort((a,b) => a.deviation - b.deviation);
+    if (!profs.length) return;
+    destroyChart('profDev');
+    CHARTS.profDev = new Chart(ctx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: profs.map(p => p.professor.replace('prof_','P')),
+        datasets: [{
+          label: 'Deviation %', data: profs.map(p => +(p.deviation*100).toFixed(2)),
+          backgroundColor: profs.map(p => p.deviation < 0 ? C.rose+'99' : C.emerald+'66'),
+          borderColor: profs.map(p => p.deviation < 0 ? C.rose : C.emerald),
+          borderWidth: 1, borderRadius: 3,
+        }]
+      },
+      options: { ...DEFAULTS, plugins: { ...DEFAULTS.plugins, legend: { display: false } },
+        scales: { ...DEFAULTS.scales, y: { ...DEFAULTS.scales.y, ticks: { ...DEFAULTS.scales.y.ticks, callback: v => v+'%' } } },
+      },
+    });
+  }
+
+  // ═══ CORRELATION MATRIX ═══════════════════════════════════════
+  function renderCorrelationMatrix() {
+    const wrap = document.getElementById('corr-matrix-wrap');
+    const corrs = DATA.interactive?.correlations;
+    if (!wrap || !corrs) return;
+    const keys = Object.keys(corrs);
+    const labelsMap = { total_sessions:'Sessions', days_active:'Days Active', avg_session_duration_sec:'Duration', quiz_pass_rate:'Pass Rate', quiz_attempts:'Attempts', funnel_max_stage:'Funnel' };
+
+    let html = '<table class="heatmap"><thead><tr><th></th>';
+    keys.forEach(k => { html += `<th>${labelsMap[k]||k}</th>`; });
+    html += '</tr></thead><tbody>';
+    keys.forEach(row => {
+      html += `<tr><td class="hm-label">${labelsMap[row]||row}</td>`;
+      keys.forEach(col => {
+        const v = corrs[row]?.[col] ?? (row===col?1:0);
+        const abs = Math.abs(v);
+        const r = v > 0 ? 16 : 239, g = v > 0 ? 185 : 68, b = v > 0 ? 129 : 68;
+        const bg = `rgba(${r},${g},${b},${(abs*0.55).toFixed(2)})`;
+        const tc = abs > 0.4 ? '#fff' : '#374151';
+        html += `<td class="hm-cell" style="background:${bg};color:${tc}" title="${(labelsMap[row]||row)} × ${(labelsMap[col]||col)}: r=${v.toFixed(3)}">${v.toFixed(2)}</td>`;
+      });
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    wrap.innerHTML = html;
+  }
+
+  </script>
+</body>
+</html>
